@@ -4,6 +4,7 @@ plugins {
     id("java")
     id("com.gradleup.shadow") version "9.0.2"
     id("com.github.gmazzo.buildconfig") version ("3.1.0")
+    id("maven-publish")
 }
 
 group "ua.nanit"
@@ -59,4 +60,21 @@ tasks {
         useJUnitPlatform()
     }
 
+}
+
+val ci = System.getenv("GITHUB_ACTOR") != null
+
+publishing {
+    if (ci) {
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/poweredbyapartium/nanolimbo")
+                credentials {
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+    }
 }
