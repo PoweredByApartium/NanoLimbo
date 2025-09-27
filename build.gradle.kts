@@ -62,17 +62,17 @@ tasks {
 
 }
 
-val ci = System.getenv("GITHUB_ACTOR") != null
+val isCi = System.getenv("GITHUB_EVENT_NAME") != null
 
 publishing {
-    if (ci) {
+    if (isCi) {
         repositories {
             maven {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/poweredbyapartium/nanolimbo")
                 credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
+                    username = System.getenv("USERNAME")
+                    password = System.getenv("TOKEN")
                 }
             }
         }
