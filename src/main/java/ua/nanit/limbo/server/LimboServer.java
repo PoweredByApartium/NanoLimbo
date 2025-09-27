@@ -130,7 +130,7 @@ public final class LimboServer {
         connections.getAllConnections().forEach(ClientConnection::sendKeepAlive);
     }
 
-    private void stop() {
+    public void stop() {
         Log.info("Stopping server...");
 
         if (keepAliveTask != null) {
