@@ -7,8 +7,8 @@ plugins {
     id("maven-publish")
 }
 
-group "ua.nanit"
-version "1.8.1"
+group = "ua.nanit"
+version = "1.8.1"
 
 java {
     toolchain {
@@ -65,8 +65,14 @@ tasks {
 val isCi = System.getenv("GITHUB_EVENT_NAME") != null
 
 publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            artifactId = "nano-limbo"
+            from(components["java"])
+        }
+    }
+
     if (isCi) {
-        println("Enabling GitHub package publishing")
         repositories {
             maven {
                 name = "GitHubPackages"
