@@ -66,13 +66,14 @@ val isCi = System.getenv("GITHUB_EVENT_NAME") != null
 
 publishing {
     if (isCi) {
+        println("Enabling GitHub package publishing")
         repositories {
             maven {
                 name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/poweredbyapartium/nanolimbo")
                 credentials {
-                    username = System.getenv("USERNAME")
-                    password = System.getenv("TOKEN")
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
         }
