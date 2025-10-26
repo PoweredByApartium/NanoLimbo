@@ -30,6 +30,15 @@ public class PingData {
     private String description;
     private int protocol;
 
+    public PingData(String version, String description, int protocol) {
+        this.version = version;
+        this.description = description;
+        this.protocol = protocol;
+    }
+
+    public PingData() {
+    }
+
     public String getVersion() {
         return version;
     }

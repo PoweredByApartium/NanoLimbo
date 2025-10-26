@@ -31,6 +31,15 @@ public class InfoForwarding {
     private byte[] secretKey;
     private List<String> tokens;
 
+    public InfoForwarding() {
+    }
+
+    public InfoForwarding(Type type, byte[] secretKey, List<String> tokens) {
+        this.type = type;
+        this.secretKey = secretKey;
+        this.tokens = tokens;
+    }
+
     public Type getType() {
         return type;
     }

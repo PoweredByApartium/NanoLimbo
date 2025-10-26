@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "ua.nanit"
-version = "1.8.1-ap1"
+version = "1.8.1-ap2"
 
 java {
     toolchain {
@@ -60,6 +60,17 @@ tasks {
         useJUnitPlatform()
     }
 
+    register<Jar>("packageJavadoc") {
+        dependsOn("javadoc")
+        from(javadoc.get().destinationDir)
+        archiveClassifier = "javadoc"
+    }
+
+    register<Jar>("sourcesJar") {
+        archiveClassifier = "sources"
+        from(sourceSets.main.get().allSource)
+    }
+
 }
 
 val isCi = System.getenv("GITHUB_EVENT_NAME") != null
@@ -69,6 +80,10 @@ publishing {
         create<MavenPublication>("maven") {
             artifactId = "nano-limbo"
             from(components["java"])
+
+            artifact(tasks.getByName("packageJavadoc"))
+            artifact(tasks.getByName("sourcesJar"))
+
         }
     }
 
