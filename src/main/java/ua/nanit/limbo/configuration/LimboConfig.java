@@ -76,6 +76,38 @@ public final class LimboConfig {
     private double interval;
     private double maxPacketRate;
 
+    public LimboConfig(SocketAddress address, int maxPlayers, PingData pingData, String dimensionType, int gameMode, boolean useBrandName, boolean useJoinMessage, boolean useBossBar, boolean useTitle, boolean usePlayerList, boolean useHeaderAndFooter, String brandName, String joinMessage, BossBar bossBar, Title title, String playerListUsername, String playerListHeader, String playerListFooter, InfoForwarding infoForwarding, long readTimeout, int debugLevel, boolean useEpoll, int bossGroupSize, int workerGroupSize, boolean useTrafficLimits, int maxPacketSize, double interval, double maxPacketRate) {
+        this.root = null;
+        this.address = address;
+        this.maxPlayers = maxPlayers;
+        this.pingData = pingData;
+        this.dimensionType = dimensionType;
+        this.gameMode = gameMode;
+        this.useBrandName = useBrandName;
+        this.useJoinMessage = useJoinMessage;
+        this.useBossBar = useBossBar;
+        this.useTitle = useTitle;
+        this.usePlayerList = usePlayerList;
+        this.useHeaderAndFooter = useHeaderAndFooter;
+        this.brandName = brandName;
+        this.joinMessage = joinMessage;
+        this.bossBar = bossBar;
+        this.title = title;
+        this.playerListUsername = playerListUsername;
+        this.playerListHeader = playerListHeader;
+        this.playerListFooter = playerListFooter;
+        this.infoForwarding = infoForwarding;
+        this.readTimeout = readTimeout;
+        this.debugLevel = debugLevel;
+        this.useEpoll = useEpoll;
+        this.bossGroupSize = bossGroupSize;
+        this.workerGroupSize = workerGroupSize;
+        this.useTrafficLimits = useTrafficLimits;
+        this.maxPacketSize = maxPacketSize;
+        this.interval = interval;
+        this.maxPacketRate = maxPacketRate;
+    }
+
     public LimboConfig(Path root) {
         this.root = root;
     }

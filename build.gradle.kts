@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "ua.nanit"
-version = "1.8.1"
+version = "1.8.1-ap1"
 
 java {
     toolchain {

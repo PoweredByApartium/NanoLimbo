@@ -72,9 +72,14 @@ public final class LimboServer {
     }
 
     public void start() throws Exception {
-        config = new LimboConfig(Paths.get("./"));
+        LimboConfig config = new LimboConfig(Paths.get("./"));
         config.load();
 
+        start(config);
+    }
+
+    public void start(LimboConfig config) throws Exception {
+        this.config = config;
         Log.setLevel(config.getDebugLevel());
         Log.info("Starting server...");
 
@@ -100,6 +105,7 @@ public final class LimboServer {
         commandManager.start();
 
         System.gc();
+
     }
 
     private void startBootstrap() {
